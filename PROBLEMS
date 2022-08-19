@@ -1,0 +1,58 @@
+Problems:
+# Script will run if you are not a root user
+# We need to make the changes/edits from the CLI
+# Need to Fetch password and Parse it somewhere else.
+# Need to handle errors
+
+ENHANCEMENT:
+----------
+OUTPUT : We can enhance the output as per the requirements.
+
+Re-directors--> Shell Concept
+STDOUT(> or 1>) ---> Output of the system can be given as an input to the file
+STDIN(<)---> file's output can be given as input to the command.
+>> --> Append the output to the existing, instead of replacing/rewriting the existing one.
+STDERR(2>) --> It will just append only the errors.
+
+STDOUT(> / 1>) STDERR (&>)
+If you want to redirect Standard Output and Standard errors to two different files separately
+you have to mention both of them.
+
+STDOUT& STDERR (&>) --> Both output and error will be redirected to the same file
+
+--> We can store the output in a file for future reference by using the above options.
+--> If you don't want any output for future reference you can nullify it using below command
+&>/dev/null
+
+PRINTING THE MESSAGE:
+--> echo command will help us printing the message on screen from our scripts
+--> While Printing we can enable some esc sequences for more options. They are shown below
+--> Quotes are mandatory for using the \esc sequence
+1. \e - To enable the color
+For colored output Printing :
+syntax: echo -e "\e[31mHelloworld\e[0m"
+-e --> To enable \e
+\e[31m --> 31m is the color code for red
+\e[0m --> 0 is to reset the color ( Note: when we enable color its our responsibility to disable it)
+
+#COLORS CODE:
+31m - RED
+32m - GREEN
+33m - YELLOW
+34m - BLUE
+35m - MAGENTA
+36m - CYAN
+
+2. \n - Print the new line ( to print the multi line and enable \n we need -e option and see below syntax)
+# syntax - echo -e "Hello\nWorld"
+3. \t - To Print the tab space
+syntax - echo \t "Hello\tworld"
+
+PROBLEM WITH SHELL SCRIPT:
+----------
+It will not stop the script incase if there are any errors/if a command is failed, it just proceeds by default.
+Solution: set -e(option)
+
+UNDERSTANDING:
+How set command knew there was an error ?.
+
