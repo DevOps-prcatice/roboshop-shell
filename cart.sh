@@ -1,13 +1,13 @@
 set -e
-echo setting nodejs repos
+echo -e "\e[31m setting nodejs repos \e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/cart.log
-echo installing NodeJs
+echo -e "\e[31m installing NodeJs \e[0m"
 yum install nodejs -y &>>/tmp/cart.log
 
-echo Adding user roboshop
+echo -e "\e[31m Adding user roboshop \e[0m"
 useradd roboshop &>>/tmp/cart.log
 
-echo downloading application content
+echo -e "\e[31mdownloading application content\e[0m"
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" &>>/tmp/cart.log
 cd /home/roboshop &>>/tmp/cart.log
 
