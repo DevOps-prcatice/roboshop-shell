@@ -1,30 +1,32 @@
 Problems:
 # Script will run if you are not a root user
 # We need to make the changes/edits from the CLI
-# Need to Fetch password and Parse it somewhere else.
+# Need to Fetch password and Parse it somewhere else. --> Using variables
 # Need to handle errors
 
 ENHANCEMENT:
 ----------
 OUTPUT : We can enhance the output as per the requirements.
 
-Re-directors--> Shell Concept
+*** Redirectors--> Shell Concept ***
+
 STDOUT(> or 1>) ---> Output of the system can be given as an input to the file
-STDIN(<)---> file's output can be given as input to the command.
+STDIN(<)---> Instead of taking input from the keyboard, if we want to send through a file then we use
+this redirector. (file's output can be given as input to the command.)
 >> --> Append the output to the existing, instead of replacing/rewriting the existing one.
 STDERR(2>) --> It will just append only the errors.
 
-STDOUT(> / 1>) STDERR (&>)
+# STDOUT(> / 1>) STDERR (&>)
 If you want to redirect Standard Output and Standard errors to two different files separately
 you have to mention both of them.
 
-STDOUT& STDERR (&>) --> Both output and error will be redirected to the same file
+# STDOUT& STDERR (&>) --> Both output and error will be redirected to the same file
 
 --> We can store the output in a file for future reference by using the above options.
 --> If you don't want any output for future reference you can nullify it using below command
 &>/dev/null
 
-PRINTING THE MESSAGE:
+# PRINTING THE MESSAGE:
 --> echo command will help us printing the message on screen from our scripts
 --> While Printing we can enable some esc sequences for more options. They are shown below
 --> Quotes are mandatory for using the \esc sequence
@@ -35,7 +37,7 @@ syntax: echo -e "\e[31mHelloworld\e[0m"
 \e[31m --> 31m is the color code for red
 \e[0m --> 0 is to reset the color ( Note: when we enable color its our responsibility to disable it)
 
-#COLORS CODE:
+*** COLORS CODE ***
 31m - RED
 32m - GREEN
 33m - YELLOW
@@ -55,4 +57,28 @@ Solution: set -e(option)
 
 UNDERSTANDING:
 How set command knew there was an error ?.
+
+*** QUOTES ***
+SINGLE QUOTES: Every character will be is considered as normal characters.
+DOUBLE QUOTES: very few characters like $ will be considered as a special character and
+remaining are considered as normal characters.
+
+*** Variables ***
+• If you assign a name to set of data that is called as a variable.
+• In Bash shell we declare the variable as --> VAR=DATA
+• In Bash Shell we access the variable as --> $VAR or ${VAR}
+• All the time we will not hardcode the value of a variable and we need the data dynamically
+• COMMAND & ARITHMETIC
+Substitution
+• VAR=$(command), this is command subst, Command output will go to VAR variable
+• VAR=$((expression)), this is arithmetic subst, expression output goes to variable.
+Example is $((2+3))
+• Variable names can have only characters a-z, A-, 0-9, _(underscore)
+• Special characters are not allowed
+• A variable should not start with a number and it can start with a Underscore.
+• Variables by default will not have any data types.
+• Everything is a string.
+• As a user you should know that what data would come, since there is no data types.
+• In Linux Shell Scripts people from Unix/Linux background considers the variable names will all CAPS. Ex: COURSE_NAME
+• People from Java/DEV background prefer CamelCases Variables Ex: courseName / CourseName.
 
