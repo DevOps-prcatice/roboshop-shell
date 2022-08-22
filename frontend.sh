@@ -9,4 +9,3 @@ unzip -o /tmp/frontend.zip &>>/tmp/frontend.log
 mv frontend-main/static/* . &>>/tmp/frontend.log
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/frontend.log
 systemctl restart nginx &>>/tmp/frontend.log
-
