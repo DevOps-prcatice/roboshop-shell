@@ -15,7 +15,7 @@ systemctl enable mongod &>>{LOG} && systemctl start mongod &>>{LOG}
 StatusCheck
 
 # Update Listen Config
-systemctl restart mongod
+#systemctl restart mongod
 
 DOWNLOAD
 
