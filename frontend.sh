@@ -1,14 +1,18 @@
+#!/bin/bash
+#Roboshop Front end
+
 source common.sh
+
 COMPONENT=frontend
 
 echo Installing Nginx
-yum install nginx -y &>>${LOG}
+yum install nginx -y
 StatusCheck
 
 DOWNLOAD
 
 echo Clean Old Content
-cd /usr/share/nginx/html &>>${LOG} && rm -rf * &>>${LOG}
+cd /usr/share/nginx/html && rm -rf *
 StatusCheck
 
 echo extract Download Content
