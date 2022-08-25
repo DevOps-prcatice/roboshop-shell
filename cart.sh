@@ -1,6 +1,6 @@
 source common.sh
 
-echo -e "\e[31m setting nodejs repos \e[0m"
+echo -e "\e[32m setting nodejs repos \e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/cart.log
 StatusCheck
 echo -e "\e[31m installing NodeJs \e[0m"
