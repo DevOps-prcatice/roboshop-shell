@@ -1,8 +1,6 @@
 #!/bin/bash
 # This script is only for DRY
 
-LOG=COMPONENT
-
 StatusCheck() {
   if [ $? -eq 0 ]; then
     echo -e "\e[32mSUCCESS\e[0m"
@@ -44,12 +42,17 @@ NODEJS() {
   echo installing NodeJs Dependencies
   npm install &>>/tmp/${COMPONENT}.log
   StatusCheck
-  
+
   echo configuring ${COMPONENT} SystemD service
   mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>>/tmp/${COMPONENT}.log && systemctl daemon-reload &>>/tmp/${COMPONENT}.log
   StatusCheck
-  
+
   echo starting ${COMPONENT} service
   systemctl start ${COMPONENT} &>>/tmp/${COMPONENT}.log && systemctl enable ${COMPONENT} &>>/tmp/${COMPONENT}.log
   StatusCheck
 }
+USER_ID=$(id -u)
+if [ $USER_ID -ne 0 ]; then
+  echo -e "\e[31mYou should be a root user to run this script or sudo\e[0m"
+  exit 1
+fi
