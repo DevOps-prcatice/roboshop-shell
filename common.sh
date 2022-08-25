@@ -10,7 +10,11 @@ StatusCheck() {
   fi
 
 }
-
+DOWNLOAD() {
+  echo downloading ${COMPONENT} application content
+  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>/tmp/${COMPONENT}.log
+  StatusCheck
+}
 NODEJS() {
   echo Setting nodejs repos
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/${COMPONENT}.log
@@ -27,12 +31,10 @@ NODEJS() {
     StatusCheck
   fi
 
-  echo downloading application content
-  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>/tmp/${COMPONENT}.log && cd /home/roboshop &>>/tmp/${COMPONENT}.log
-  StatusCheck
+  DOWNLOAD
 
   echo Cleaning the old application content
-  rm -rf ${COMPONENT} &>>/tmp/${COMPONENT}.log
+  cd /home/roboshop &>>/tmp/${COMPONENT}.log && rm -rf ${COMPONENT} &>>/tmp/${COMPONENT}.log
   StatusCheck
 
   echo extracting application archive
@@ -56,3 +58,6 @@ if [ $USER_ID -ne 0 ]; then
   echo -e "\e[31mYou should be a root user to run this script or sudo\e[0m"
   exit 1
 fi
+
+LOG=&>>/tmp/${COMPONENT}.log
+rm -f ${LOG}
