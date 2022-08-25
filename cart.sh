@@ -9,7 +9,7 @@ yum install nodejs -y &>>/tmp/cart.log
 StatusCheck
 
 id roboshop &>>/tmp/cart.log
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
   echo Adding Application User
   useradd roboshop &>>/tmp/cart.log
   StatusCheck
