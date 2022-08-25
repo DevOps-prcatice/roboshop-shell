@@ -39,6 +39,6 @@ StatusCheck
 echo starting cart service
 systemctl start cart &>>/tmp/cart.log
 systemctl enable cart &>>/tmp/cart.log
-echo $?
+StatusCheck
 
 
