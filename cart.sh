@@ -1,18 +1,18 @@
 source common.sh
 
-echo  Setting nodejs repos 
+echo Setting nodejs repos
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/cart.log
 StatusCheck
 
-echo   installing NodeJs 
+echo installing NodeJs
 yum install nodejs -y &>>/tmp/cart.log
 StatusCheck
-
-echo   Adding Application User
+UserStatus
+echo Adding Application User
 useradd roboshop &>>/tmp/cart.log
 StatusCheck
 
-echo  downloading application content
+echo downloading application content
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" &>>/tmp/cart.log
 cd /home/roboshop &>>/tmp/cart.log
 StatusCheck
@@ -40,5 +40,3 @@ echo starting cart service
 systemctl start cart &>>/tmp/cart.log
 systemctl enable cart &>>/tmp/cart.log
 StatusCheck
-
-

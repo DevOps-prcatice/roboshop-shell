@@ -6,7 +6,17 @@ StatusCheck() {
     echo -e "\e[32mSUCCESS\e[0m"
   else
     echo -e "\e[31mFAILURE\e[0m"
-    #exit 1
+    exit 1
+  fi
+
+}
+UserStatus(){
+  sudo id -u roboshop
+  if [ $? -eq 0 ]; then
+    echo "User already exists"
+  else
+    echo "Please add a user"
+    exit 1
   fi
 }
 
