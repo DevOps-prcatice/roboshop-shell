@@ -1,4 +1,4 @@
-COMPONENT="${LOG}"
+COMPONENT="&>>/tmp/cart.log"
 source common.sh
 
 echo Setting nodejs repos

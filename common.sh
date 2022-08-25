@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script is only for DRY
 
-LOG=COMPONENT
+LOG="COMPONENT"
 
 StatusCheck() {
   if [ $? -eq 0 ]; then
