@@ -6,13 +6,13 @@ source common.sh
 COMPONENT=frontend
 
 echo Installing Nginx
-yum install nginx -y
+yum install nginx -y &>>${LOG}
 StatusCheck
 
 DOWNLOAD
 
 echo Clean Old Content
-cd /usr/share/nginx/html && rm -rf *
+cd /usr/share/nginx/html &>>${LOG} && rm -rf * &>>${LOG}
 StatusCheck
 
 echo extract Download Content
