@@ -1,9 +1,11 @@
-set -e
+source common.sh
+
 echo -e "\e[31m setting nodejs repos \e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/cart.log
+StatusCheck
 echo -e "\e[31m installing NodeJs \e[0m"
 yum install nodejs -y &>>/tmp/cart.log
-
+StatusCheck
 echo -e "\e[31m Adding user roboshop \e[0m"
 useradd roboshop &>>/tmp/cart.log
 
