@@ -1,6 +1,8 @@
 #!/bin/bash
 # This script is only for DRY
 
+LOG=COMPONENT
+
 StatusCheck() {
   if [ $? -eq 0 ]; then
     echo -e "\e[32mSUCCESS\e[0m"
@@ -11,7 +13,7 @@ StatusCheck() {
 
 }
 
-UserStatus(){
+UserStatus() {
   id roboshop &>>/tmp/cart.log
   if [ $? -ne 0 ]; then
     echo Adding Application User
