@@ -10,8 +10,9 @@ StatusCheck() {
   fi
 
 }
+: '
 UserStatus(){
-  sudo id -u roboshop
+
   if [ $? -eq 0 ]; then
     echo "User already exists"
   else
@@ -19,5 +20,5 @@ UserStatus(){
     exit 1
   fi
 }
-
+'
 

@@ -7,11 +7,13 @@ StatusCheck
 echo installing NodeJs
 yum install nodejs -y &>>/tmp/cart.log
 StatusCheck
-UserStatus
-echo Adding Application User
-useradd roboshop &>>/tmp/cart.log
-StatusCheck
 
+id roboshop &>>/tmp/cart.log
+if [ $? -eq 0 ]; then
+  echo Adding Application User
+  useradd roboshop &>>/tmp/cart.log
+  StatusCheck
+fi
 echo downloading application content
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" &>>/tmp/cart.log
 cd /home/roboshop &>>/tmp/cart.log
