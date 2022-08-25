@@ -10,15 +10,14 @@ StatusCheck() {
   fi
 
 }
-: '
-UserStatus(){
 
-  if [ $? -eq 0 ]; then
-    echo "User already exists"
-  else
-    echo "Please add a user"
-    exit 1
+UserStatus(){
+  id roboshop &>>/tmp/cart.log
+  if [ $? -ne 0 ]; then
+    echo Adding Application User
+    useradd roboshop &>>/tmp/cart.log
+    StatusCheck
   fi
 }
-'
+
 
