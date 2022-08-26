@@ -1,6 +1,9 @@
 source common.sh
 COMPONENT=mysql
 
+if [ -z "$MYSQL_PASSWD" ] ; then
+  echo "\e[33menv variable mysql password is missing\e[0m"
+
 echo Setup Yum Repo
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>{LOG}
 StatusCheck
