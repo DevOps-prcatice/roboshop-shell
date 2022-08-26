@@ -36,5 +36,5 @@ fi
 DOWNLOAD
 
 echo "Extract and Load Schema "
-cd /tmp &>>{LOG} && unzip mysql.zip -o &>>{LOG} && cd mysql-main &>>{LOG} && mysql -u root -pRoboShop@1 <shipping.sql &>>{LOG}
+cd /tmp &>>{LOG} && unzip -o mysql.zip  &>>{LOG} && cd mysql-main &>>{LOG} && mysql -u root -pRoboShop@1 <shipping.sql &>>{LOG}
 StatusCheck
