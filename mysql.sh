@@ -19,17 +19,18 @@ systemctl enable mysqld &>>{LOG} && systemctl start mysqld &>>{LOG}
 StatusCheck
 
 echo "show databases;" | mysql -uroot -p$MYSQL_PASSWD &>>{LOG}
-if [ $? -ne 0 ] ; then
+if [ $? -ne 0 ]; then
   echo Changing the default password
   DEFAULT_PASSWD=$(sudo grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
   echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWD';" | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWD}
 fi
 
-echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWD 2>&1 | grep validate_password  &>>{LOG}
-if [ $? -eq 0 ] ; then
+echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWD 2>&1 | grep validate_password &>>{LOG}
+if [ $? -eq 0 ]; then
   echo Removing the password validate plugin
-  uninstall plugin validate_password | mysql -uroot -P$MYSQL_PASSWD
-  fi
+  echo uninstall plugin validate_password | mysql -uroot -p$MYSQL_PASSWD
+  StatusCheck
+fi
 
 #> uninstall plugin validate_password;
 exit
