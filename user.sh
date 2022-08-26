@@ -1,3 +1,4 @@
-source common.sh
 COMPONENT=user
+source common.sh
+
 NODEJS

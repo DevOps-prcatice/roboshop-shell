@@ -1,9 +1,8 @@
 #!/bin/bash
 #Roboshop Front end
 
-source common.sh
-
 COMPONENT=frontend
+source common.sh
 
 echo Installing Nginx
 yum install nginx -y &>>${LOG}

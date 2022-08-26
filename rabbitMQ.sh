@@ -1,7 +1,8 @@
-source common.sh
 COMPONENT=rabbitmq
-if [ -z "$RABBITMQ_APP_PASSWORD" ] ; then
-  echo -e  "\e[33menv variable RABBITMQ_APP_PASSWORD is needed\e[0m"
+source common.sh
+
+if [ -z "$RABBITMQ_APP_PASSWORD" ]; then
+  echo -e "\e[33menv variable RABBITMQ_APP_PASSWORD is needed\e[0m"
   exit 1
 fi
 echo Setup YUM Repos
