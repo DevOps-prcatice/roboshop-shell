@@ -19,7 +19,7 @@ systemctl enable mysqld &>>{LOG} && systemctl start mysqld &>>{LOG}
 StatusCheck
 
 echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWD | grep validate_password &>>{LOG}
-if [ $? -ne 0 ] ; then
+if [ $? -eq 0 ] ; then
   echo Remove Password Validate Plugin
  echo "uninstall plugin validate_password;" | mysql -uroot -P$MYSQL_PASSWD
  fi
