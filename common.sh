@@ -72,12 +72,29 @@ JAVA() {
   APP_USER_SETUP
   DOWNLOAD
   APP_CLEAN
+
   echo Make Application Package
   mvn clean package &>>${LOG} && mv target/shipping-1.0.jar shipping.jar &>>${LOG}
   StatusCheck
 
   SYSTEMD
 
+}
+
+PYTHON() {
+  echo Install Python
+  yum install python36 gcc python3-devel -y &>>{LOG}
+  StatusCheck
+
+  APP_USER_SETUP
+  DOWNLOAD
+  APP_CLEAN
+
+  echo Install Python Dependencies
+  cd /home/roboshop/payment &>>{LOG} && pip3 install -r requirements.txt &>>{LOG}
+  StatusCheck
+
+  SYSTEMD
 }
 
 USER_ID=$(id -u)
