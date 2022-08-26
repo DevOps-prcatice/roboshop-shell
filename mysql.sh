@@ -2,7 +2,8 @@ source common.sh
 COMPONENT=mysql
 
 if [ -z "$MYSQL_PASSWD" ] ; then
-  echo "\e[33menv variable mysql password is missing\e[0m"
+  echo "\e[33m env variable MYSQL_PASSWD is missing\e[0m"
+  exit 1
   fi
 
 echo Setup Yum Repo
